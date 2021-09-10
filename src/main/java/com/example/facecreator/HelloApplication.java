@@ -10,12 +10,15 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 public class HelloApplication extends Application {
     static int width = 600;
     static int height = 600;
     static Canvas canvas = new Canvas(width, height);
     static GraphicsContext gc = canvas.getGraphicsContext2D();
+
+
 
 
     @Override
@@ -39,6 +42,10 @@ public class HelloApplication extends Application {
         drawShape();
         drawMouth(50);
         drawEyes();
+        drawNose();
+        drawLeftEar();
+        drawRightEar();
+        drawNeck();
     }
 
     public static void drawShape() {
@@ -51,12 +58,53 @@ public class HelloApplication extends Application {
     }
 
     public static void drawEyes() {
-        gc.setFill(Color.BLACK);
+        gc.setFill(Color.BLUE);
         gc.fillOval(220,220,20,20);
         gc.fillOval(360,220,20,20);
     }
+    public static void drawNose(){
+        gc.setFill(Color.GRAY);
+        gc.fillRect(290,300,20,20);
+    }
+
+    public static void drawLeftEar() {
+        gc.strokeOval(125,190,50,50);
+    }
+
+    public static void drawRightEar() {
+        gc.strokeOval(425,190,50,50);
+    }
+
+    public static void drawNeck() {
+        gc.fillRect(160,450,300,550);
+
+    }
 
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Choose what color eyes you want");
+        System.out.println("1 for demon eyes");
+        System.out.println("2 for angel eyes");
+        System.out.println("3 for forest eyes");
+        scanner.nextLine();
+        int number = scanner.nextInt();
+
+        if (number == 1) {
+            gc.setFill(Color.RED);
+        }else if (number == 2){
+            gc.setFill(Color.BLUE);
+        } else if (number == 3){
+            gc.setFill(Color.GREEN);
+        }
+
+
+
+
+
+
+
+
         launch();
+
     }
 }
